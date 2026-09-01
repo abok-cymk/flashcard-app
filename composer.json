@@ -1,0 +1,21 @@
+{
+  "name": "app/flashcard",
+  "description": "Learning twig by following the docs and build a flashcard app",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "twig/twig": "^3.28"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "abok-cymk",
+      "email": "allanabok18@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}

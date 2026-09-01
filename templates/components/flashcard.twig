@@ -1,0 +1,111 @@
+<div
+    class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200"
+    data-flashcard
+>
+    <div class="flex items-center justify-between">
+        <span
+            class="
+                rounded-full bg-amber-100 px-4 py-2
+                text-sm font-semibold text-amber-800
+            "
+        >
+            {{ flashcard.category }}
+        </span>
+
+        <span class="text-sm text-slate-500">
+            Card {{ position }} of {{ total }}
+        </span>
+    </div>
+
+    <div class="py-16 text-center">
+        <p class="text-sm font-medium text-slate-500">
+            QUESTION
+        </p>
+
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900">
+            {{ flashcard.question }}
+        </h2>
+    </div>
+
+    <div
+        class="border-t border-slate-200 pt-6 text-center"
+        data-flashcard-answer
+    >
+        <p class="text-sm font-medium text-slate-500">
+            ANSWER
+        </p>
+
+        <p class="mt-4 text-xl font-medium text-slate-900">
+            {{ flashcard.answer }}
+        </p>
+    </div>
+
+    <div class="mt-6">
+        <button
+            type="button"
+            class="
+                w-full rounded-xl bg-slate-900 px-6 py-4
+                font-semibold text-white
+                transition hover:bg-slate-700
+            "
+            data-flashcard-toggle
+            aria-expanded="true"
+        >
+            Hide Answer
+        </button>
+    </div>
+    <nav
+    class="mt-6 flex items-center justify-between gap-4"
+    aria-label="Flashcard navigation"
+>
+    {% if hasPrevious %}
+        <a
+            href="/?card={{ position - 1 }}"
+            class="
+                inline-flex items-center justify-center rounded-xl
+                border border-slate-300 px-5 py-3
+                font-semibold text-slate-700
+                transition hover:bg-slate-50
+            "
+        >
+            Previous
+        </a>
+    {% else %}
+        <span
+            class="
+                inline-flex cursor-not-allowed items-center justify-center
+                rounded-xl border border-slate-200 px-5 py-3
+                font-semibold text-slate-400
+            "
+            aria-disabled="true"
+        >
+            Previous
+        </span>
+    {% endif %}
+
+    {% if hasNext %}
+        <a
+            href="/?card={{ position + 1 }}"
+            class="
+                inline-flex items-center justify-center rounded-xl
+                bg-slate-900 px-5 py-3
+                font-semibold text-white
+                transition hover:bg-slate-700
+            "
+        >
+            Next
+        </a>
+    {% else %}
+        <span
+            class="
+                inline-flex cursor-not-allowed items-center justify-center
+                rounded-xl bg-slate-200 px-5 py-3
+                font-semibold text-slate-400
+            "
+            aria-disabled="true"
+        >
+            Next
+        </span>
+    {% endif %}
+</nav>
+</div>

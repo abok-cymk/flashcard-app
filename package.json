@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/css/app.css",
+    "watch:css": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/css/app.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
