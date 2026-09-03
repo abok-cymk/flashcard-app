@@ -7,10 +7,9 @@
 {% block content %}
 	{% include "components/header.twig" %}
 
-	<main>
 		<div class="w-full">
 			<section class="grid gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_20rem]" aria-label="Flashcard study area">
-				<article>
+				<article id="swup">
 					{% if flashcard %}
 						{% include "components/flashcard.twig" with {
                             flashcard: flashcard,
@@ -46,5 +45,4 @@
 				</aside>
 			</section>
 		</div>
-	</main>
 {% endblock %}

@@ -1,32 +1,30 @@
-const flashcard = document.querySelector('[data-flashcard]');
+let isAnswerVisible = false;
 
-if (flashcard) {
-    const answer = flashcard.querySelector(
-        '[data-flashcard-answer]',
-    );
+function syncFlashcardUI() {
+    const flashcard = document.querySelector('[data-flashcard]');
+    if (!flashcard) return;
 
-    const toggleButton = flashcard.querySelector(
-        '[data-flashcard-toggle]',
-    );
+    const answer = flashcard.querySelector('[data-flashcard-answer]');
+    const toggleButton = flashcard.querySelector('[data-flashcard-toggle]');
 
     if (answer && toggleButton) {
-        answer.hidden = true;
-        toggleButton.setAttribute('aria-expanded', 'false');
-        toggleButton.textContent = 'Show Answer';
-
-        toggleButton.addEventListener('click', () => {
-            const isHidden = answer.hidden;
-
-            answer.hidden = !isHidden;
-
-            toggleButton.setAttribute(
-                'aria-expanded',
-                String(isHidden),
-            );
-
-            toggleButton.textContent = isHidden
-                ? 'Hide Answer'
-                : 'Show Answer';
-        });
+        answer.hidden = !isAnswerVisible;
+        toggleButton.setAttribute('aria-expanded', String(isAnswerVisible));
+        toggleButton.textContent = isAnswerVisible ? 'Hide Answer' : 'Show Answer';
     }
+}
+
+document.addEventListener('click', (event) => {
+    const toggleButton = event.target.closest('[data-flashcard-toggle]');
+    if (!toggleButton) return;
+
+    isAnswerVisible = !isAnswerVisible;
+    syncFlashcardUI();
+});
+
+syncFlashcardUI();
+if (window.swup) {
+    window.swup.hooks.on('page:view', () => {
+        syncFlashcardUI();
+    });
 }

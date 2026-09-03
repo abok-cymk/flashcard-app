@@ -4,7 +4,10 @@
     "watch:css": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/css/app.css --watch"
   },
   "dependencies": {
+    "@swup/scripts-plugin": "^2.1.0",
     "@tailwindcss/cli": "^4.3.3",
+    "motion": "^13.1.1",
+    "swup": "^4.9.2",
     "tailwindcss": "^4.3.3"
   }
 }
